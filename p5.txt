@@ -108,25 +108,56 @@ INVITE, ACK, OPTIONS, BYE, CANCEL, NOTIFY, REFER, MESSAGE
 
 9. Fijémonos en las tramas siguientes a la número 46:
  ** ¿Se registra con éxito en el primer intento?
+No, porque el estado es 401 no autorizado.
+ 
  ** ¿Cómo sabemos si el registro se ha realizado correctamente o no?
+ Se sabe por el estado, si tiene 200 ok se ha realizado correctamente.
+ 
  ** ¿Podrías identificar las diferencias entre el primer intento y el segundo de registro? (fíjate en el tamaño de los paquetes y mira a qué se debe el cambio)
+ Es mayor en el primer intento, dado que en el segundo de registro no envia la cabecera AUTHORIZATION.
+ 
  ** ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica las unidades.
-
+Expires: 3600 segundos
 
 10. Una vez registrados, podemos efectuar una llamada. Vamos a probar con el servicio de eco de Ekiga que nos permite comprobar si nos hemos conectado correctamente. El servicio de eco tiene la dirección sip:500@ekiga.net. Veamos el INVITE de cerca.
  ** ¿Puede verse el nombre del que efectúa la llamada, así como su dirección SIP?
+si, el nombre del que efectúa la llamada es "Gregorio Robles" y su dirección SIP es <sip:grex@ekiga.net>
+ 
  ** ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué formato/protocolo está?
+El cuerpo de la trama contiene audio y video.
+Está en formato/protocolo SIP/SDP
+ 
  ** ¿Tiene éxito el primer intento? ¿Cómo lo sabes?
+No, porque se ha recibido 407 requerida autentificación proxy.
+ 
  ** ¿En qué se diferencia el segundo INVITE más abajo del primero? ¿A qué crees que se debe esto?
+Cuando se hace el segundo INVITE se recibe un 100 trying y después un 200 ok.
 
 
 11. Una vez conectado, estudia el intercambio de tramas.
  ** ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos?
+RTP y H.261
+Sirven para enviar tramas de aplicaciones de tiempo real. 
+ 
  ** ¿Cuál es el tamaño de paquete de los mismos?
+ RTP = 214 y de H.261 varían desde 205 a 1074.
+ 
  ** ¿Se utilizan bits de padding?
+No, padding: False 
+ 
  ** ¿Cuál es la periodicidad de los paquetes que se envían?
- ** ¿Cuántos bits/segundo estamos enviando?
+214 bytes caja entera
+160 bytes el contenido (160 sampling periods (periodos de muestreo))
+160 x 8 = 1280 bits 
 
+tenemos un total de 50 paquetes/seg
+
+50 paquetes/seg x 1280 bits = 64000 bits/seg
+
+1 / 50 paquetes/seg = 0,02 segundos = 20 ms es la periodicidad
+ 
+ ** ¿Cuántos bits/segundo estamos enviando?
+50 paquetes/seg x 1280 bits = 64000 bits/seg
 
 
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
