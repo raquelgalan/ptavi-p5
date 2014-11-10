@@ -1,5 +1,7 @@
 Raquel Galán Montes 
 
+Comprobado check-p5.py
+
 Creación de repositorio para la práctica
 
 1. Con el navegador, dirígete al repositorio ptavi-p5 en la cuenta del profesor en GitHub1 y realiza un fork, de manera que consigas tener una copia del repositorio en tu cuenta de GitHub. Clona el repositorio que acabas de crear a local para poder editar los archivos. Trabaja a partir de ahora en ese repositorio, sincronizando los cambios que vayas realizando.
