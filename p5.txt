@@ -164,35 +164,74 @@ tenemos un total de 50 paquetes/seg
 
 12. Vamos a ver más a fondo el intercambio RTP. En Telephony hay una opción RTP. Empecemos mirando los flujos RTP.
  ** ¿Cuántos flujos hay? ¿por qué?
+Hay dos flujos H.261 y G.711A, porque el primero se encarga de la codificación del video y el segundo del audio.
+ 
  ** ¿Cuántos paquetes se pierden?
- ** ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el valor de delta?
- ** ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad?
+No se pierde ningún paquete (0.0% paquetes perdidos)
 
+ ** ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el valor de delta?
+El valor máximo del delta del flujo H.261 (video) es de 1290.48 ms.
+El valor máximo del delta del flujo G.711A (audio) es de 1290.44 ms.
+El valor de delta significa el tiempo que invierte un paquete en ir de un punto origen a un punto destino.
+ 
+ ** ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad?
+Flujo H.261 (video) => Valor medio de jitter: 153.24 ms  Valor máximo de jitter: 183.10 ms
+Flujo G.711A (audio) => Valor medio de jitter: 42.50 ms Valor máximo de jitter: 119.64 ms
+
+Jitter determina la variación temporal, es el tiempo de retardo de una transmisión de paquetes. El valor máximo es la mayor duración que puede darse en llegada de los paquetes y el valor medio es lo que duraría de forma habitual en llegar los paquetes.
+
+No es una conversación de calidad, dado que hay retardos en los paquetes y podrían llegar desordenados.
 
 13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony -> RTP -> Stream Analysis.
  ** ¿Cuánto valen el delta y el jitter para el primer paquete que ha llegado?
+ delta vale 0 y jitter vale 0
+ 
  ** ¿Podemos saber si éste es el primer paquete que nos han enviado?
+No, porque podrían llegar desordenados y entonces no podríamos saber si es el primero o no. Aunque, es el único que tiene todo ceros (delta, jitter y skew) lo que nos indica que sería el primero.
+ 
  ** Los valores de jitter son menores de 10ms hasta un paquete dado. ¿Cuál?
+El paquete 247, con número de secuencia 23421.
+ 
  ** ¿A qué se debe el cambio tan brusco del jitter?
+A que delta es mucho más grande, debido a que ha llegado tarde el paquete.
+ 
  ** ¿Es comparable este cambio con el tiempo desde la recepción del paquete anterior? ¿Por qué?
+No es comparable, dado que ??????
+ 
  ** ¿Cuál es la dependencia entre el tiempo transcurrido desde el paquete anterior y el valor de jitter?
-
+Si aumenta el tiempo transcurrido desde el último paquete, aumenta el valor del jitter.
 
 14. En Telephony selecciona el menú VoIP calls. Verás que se lista la llamada de voz IP capturada en una ventana emergente. Selecciona esa llamada y pulsa el botón Graph.
  ** ¿Cuánto dura la conversación?
+Tiempo final - Tiempo inicial = 39.230 - 14.427 = 24.803 segundos
+ 
  ** ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
+Flujo H.261 (video) => SSRC:0x43306582
+Flujo G.711A (audio) => SSRC:0xBF4AFD37
 
+Hay dos SSRCs, uno por cada flujo.
+
+No hay CSRCs porque no hay mezclador.
 
 15. Identifica la trama donde se finaliza la conversación.
  ** ¿Qué método SIP se utiliza?
+Se usa el método BYE.
+ 
  ** ¿En qué trama(s)?
+En las tramas 924, 925, 927 y 933.  
+ 
  ** ¿Por qué crees que se envía varias veces?
-
+Se envía varias veces porque no le ha llegado el 200 OK.
 
 16. Finalmente, se cierra la aplicación de VozIP.
  ** ¿Por qué aparece una instrucción SIP del tipo REGISTER?
+Porque es necesario para darse de baja. 
+ 
  ** ¿En qué trama sucede esto?
+Sucede en la trama 950.
+ 
  ** ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)?
+El primer REGISTER es para darte de alta y el segundo es para darte de baja.
 
 
 
