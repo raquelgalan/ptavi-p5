@@ -250,12 +250,12 @@ El uso de DNS es necesario para que me devuelva el sevidor de nombres y éste la
 El uso de STUN no es necesario, porque somos una IP pública en este caso. Aunque se usa para comprobarlo.
 
  ** ¿Son diferentes el registro y la descripción de la sesión?
-El registro es igual, pero la descripción es diferente.
+El registro es igual, pero la descripción es diferente porque tienen distinto ancho de banda.
 
 
 18. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
  ** ¿Cuántos flujos tenemos?
-Seguimos teniendo dos flujos de audio, uno por cada usuario.
+Seguimos teniendo dos flujos de audio, pero cada uno es de un usuario.
 
  ** ¿Cuál es su periodicidad?
 Como es el mismo protocolo su periodicidad es de 20ms.
