@@ -1,4 +1,6 @@
- Creación de repositorio para la práctica
+Raquel Galán Montes 
+
+Creación de repositorio para la práctica
 
 1. Con el navegador, dirígete al repositorio ptavi-p5 en la cuenta del profesor en GitHub1 y realiza un fork, de manera que consigas tener una copia del repositorio en tu cuenta de GitHub. Clona el repositorio que acabas de crear a local para poder editar los archivos. Trabaja a partir de ahora en ese repositorio, sincronizando los cambios que vayas realizando.
 
@@ -129,16 +131,29 @@ Captura una sesión SIP de una conversación con el número SIP sip:9999@qxip.ne
 
 17. Observa las diferencias en el inicio de la conversación entre el entorno del laboratorio y el del ejercicio anterior:
  ** ¿Es necesario el uso de DNS y STUN? ¿Por qué?
+El uso de DNS es necesario para que me devuelva el sevidor de nombres y éste la IP de ekiga.
+El uso de STUN no es necesario, porque somos una IP pública en este caso. Aunque se usa para comprobarlo.
+
  ** ¿Son diferentes el registro y la descripción de la sesión?
+El registro es igual, pero la descripción es diferente.
 
 
 18. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
  ** ¿Cuántos flujos tenemos?
- ** ¿Cuál es su periodicidad?
- ** ¿Cuánto es el valor máximo del delta y los valores medios y máximo del jitter?
- ** ¿Podrías reproducir la conversación desde Wireshark? ¿Cómo? Comprueba que poniendo un valor demasiado pequeño para el buffer de jitter, la conversación puede no tener la calidad necesaria.
- ** ¿Sabrías decir qué tipo de servicio ofrece sip:9999@qxip.net?
+Seguimos teniendo dos flujos de audio, uno por cada usuario.
 
+ ** ¿Cuál es su periodicidad?
+Como es el mismo protocolo su periodicidad es de 20ms.
+
+ ** ¿Cuánto es el valor máximo del delta y los valores medios y máximo del jitter?
+De la ip 188.226.157.55 el valor máximo del delta es 40.23ms, el valor medio del jitter es 0.39ms y el máximo del jitter es 1.95ms.
+De la ip 193.147.49.108 el valor máximo del delta es 24.37ms, el valor medio del jitter es 0.30ms y el máximo del jitter es 0.85ms.
+
+ ** ¿Podrías reproducir la conversación desde Wireshark? ¿Cómo? Comprueba que poniendo un valor demasiado pequeño para el buffer de jitter, la conversación puede no tener la calidad necesaria.
+Si se puede reproducir la conversación desde Wireshark, telephony => RTP => Show All Stream => Eliges uno de los flujos => Analize
+
+ ** ¿Sabrías decir qué tipo de servicio ofrece sip:9999@qxip.net?
+Ofrece música.
 
 
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
