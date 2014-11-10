@@ -81,7 +81,7 @@ Los paquetes RTP se envían desde el segundo 16 hasta el 39.
  le devuelve la ip que se está pidiendo que es 83.36.48.212
  
  ** Si lanzamos el navegador web, por ejemplo, Mozilla Firefox, y vamos a la misma URL, ¿qué recibimos? ¿Qué es, entonces, lo que está respondiendo el servidor?
-obtenemos una ip que es la que está usando mi ordenador para conectarse a internet. El servidor ekiga devuelve mi dirección pública, que es con la que me he puesto en contacto con él.
+Obtenemos una ip que es la que está usando mi ordenador para conectarse a internet. El servidor ekiga devuelve mi dirección pública, que es con la que me he puesto en contacto con él.
 
 7. Hasta la trama 45 se puede observar una secuencia de tramas del protocolo STUN.
  ** ¿Por qué crees que se hace uso de este protocolo en esta captura? Busca en la Wikipedia.
@@ -95,7 +95,7 @@ si, porque nuestra dirección es privada y para relacionarnos tenemos que usar l
  83.36.48.212
  
  ** ¿A qué puerto (del servidor Registrar) se envían los paquetes SIP?
- 5063
+ 5060
  
  ** ¿Qué método SIP utiliza el UA para registrarse?
  Register
@@ -114,7 +114,7 @@ No, porque el estado es 401 no autorizado.
  Se sabe por el estado, si tiene 200 ok se ha realizado correctamente.
  
  ** ¿Podrías identificar las diferencias entre el primer intento y el segundo de registro? (fíjate en el tamaño de los paquetes y mira a qué se debe el cambio)
- Es mayor en el primer intento, dado que en el segundo de registro no envia la cabecera AUTHORIZATION.
+ Es mayor en el primer intento, dado que en el segundo de registro no envía la cabecera AUTHORIZATION.
  
  ** ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica las unidades.
 Expires: 3600 segundos
@@ -132,7 +132,6 @@ No, porque se ha recibido 407 requerida autentificación proxy.
  
  ** ¿En qué se diferencia el segundo INVITE más abajo del primero? ¿A qué crees que se debe esto?
 Cuando se hace el segundo INVITE se recibe un 100 trying y después un 200 ok.
-
 
 11. Una vez conectado, estudia el intercambio de tramas.
  ** ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos?
@@ -196,7 +195,7 @@ El paquete 247, con número de secuencia 23421.
 A que delta es mucho más grande, debido a que ha llegado tarde el paquete.
  
  ** ¿Es comparable este cambio con el tiempo desde la recepción del paquete anterior? ¿Por qué?
-No es comparable, dado que ??????
+No es comparable, dado que es mucha la diferencia de las deltas.
  
  ** ¿Cuál es la dependencia entre el tiempo transcurrido desde el paquete anterior y el valor de jitter?
 Si aumenta el tiempo transcurrido desde el último paquete, aumenta el valor del jitter.
